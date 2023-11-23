@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9114aae6fc644bdb3fbc2e650e7fcd, type: 3}
+  m_Name: CoinsSO
+  m_EditorClassIdentifier: 
+  Coins:
+  - {fileID: -3903579532816590362, guid: 2a1f7b2fb19e842bd9e3b6f051d174d7, type: 3}
+  - {fileID: 7099712974593949553, guid: 0f2d8a21abb4149f3b1885f743792bdb, type: 3}
+  - {fileID: -2424308068383889070, guid: 37589e5fc35b149a18b4e15e388bd266, type: 3}
