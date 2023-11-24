@@ -1,11 +1,13 @@
 using System;
 using UniRx;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;
-    [SerializeField] private FixedJoystick _fixedJoystick;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private Animator _animator;
 
     [SerializeField] private float _moveSpeed;
     
@@ -14,15 +16,21 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _characterController.Move( new Vector3(_fixedJoystick.Horizontal * _moveSpeed,
-            _characterController.velocity.y, +_fixedJoystick.Vertical * _moveSpeed));
+        Vector2 input = _playerInput.actions["Move"].ReadValue<Vector2>();
+        Vector3 move = new Vector3(input.x, 0, input.y);
+        _characterController.Move(move * Time.deltaTime * _moveSpeed);
 
-        if (_fixedJoystick.Horizontal != 0 || _fixedJoystick.Vertical != 0)
+        if (input.x != 0 || input.y != 0)
         {
             transform.rotation = Quaternion.LookRotation(_characterController.velocity);
+            _animator.SetBool("IsRun", true);
+        }
+        else
+        {
+            _animator.SetBool("IsRun", false);
         }
     }
-    
+
     void OnControllerColliderHit(ControllerColliderHit hit) 
     {
         if (hit.gameObject.TryGetComponent<ACoin>(out ACoin coin))
