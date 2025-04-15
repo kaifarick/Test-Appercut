@@ -10,9 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     [SerializeField] private float _moveSpeed;
-    
-    public ReactiveProperty<int> CoinsCount { get; private set; } =  new ReactiveProperty<int>();
-    private int _lastCoinCollect;
+
+    public event Action<CoinsTypeEnum> OnPlayerCollectedAction; 
 
     private void FixedUpdate()
     {
@@ -33,19 +32,10 @@ public class Player : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit) 
     {
-        if (hit.gameObject.TryGetComponent<ACoin>(out ACoin coin))
+        if (hit.gameObject.TryGetComponent(out ACoinView coin))
         {
             coin.Collected();
-            
-            if (coin.CoinsType == ACoin.CoinsTypeEnum.GoldCoin)
-            {
-                CoinsCount.Value += _lastCoinCollect;
-            }
-            else
-            {
-                CoinsCount.Value += coin.Cost;
-                _lastCoinCollect = coin.Cost;
-            }
+            OnPlayerCollectedAction?.Invoke(coin.CoinsType);
         }
     }
 }

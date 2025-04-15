@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
-public class CopperCoin : ACoin
+public class CopperCoinView : ACoinView
 {
     [SerializeField] private AudioSource _audioSource;
+    public override CoinsTypeEnum CoinsType => CoinsTypeEnum.CopperCoin;
+    
+
     public override void Collected()
     {
         base.Collected();

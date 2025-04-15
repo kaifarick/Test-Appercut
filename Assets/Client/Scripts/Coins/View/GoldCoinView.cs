@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class GoldCoin : ACoin
+public class GoldCoinView : ACoinView
 {
+    public override CoinsTypeEnum CoinsType => CoinsTypeEnum.GoldCoin;
+    
     public override void Spawn()
     {
         base.Spawn();
@@ -12,8 +12,10 @@ public class GoldCoin : ACoin
         gameObject.transform.localScale = new Vector3(0, 0, 0);
         
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(gameObject.transform.DOScale(new Vector3(START_SCALE, START_SCALE, START_SCALE), 0.5f)
-            .SetEase(Ease.OutBack));
+        sequence.Append(gameObject.transform.DOScale(_defaultScale, 0.5f).SetEase(Ease.OutBack)).AppendCallback((() =>
+        {
+            
+        }));
     }
 
     public override void Collected()

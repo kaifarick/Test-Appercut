@@ -3,13 +3,10 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class SilverCoin : ACoin
+public class SilverCoinView : ACoinView
 {
-    public override void Spawn()
-    {
-        base.Spawn();
-        transform.localScale = new Vector3(START_SCALE, START_SCALE, START_SCALE);
-    }
+    
+    public override CoinsTypeEnum CoinsType => CoinsTypeEnum.SilverCoin;
 
     public override void Collected()
     {

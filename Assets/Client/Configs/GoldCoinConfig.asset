@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80fd351449054720b709fa5bb375fc1, type: 3}
+  m_Name: GoldCoinConfig
+  m_EditorClassIdentifier: 
+  CoinType: 2
+  CoinPrefab: {fileID: -2424308068383889070, guid: 37589e5fc35b149a18b4e15e388bd266, type: 3}
+  CoinRewardCount: 4
